@@ -1,0 +1,19 @@
+{
+  "name": "blkout-simple-technical",
+  "version": "1.0.0",
+  "description": "Simplified technical implementation of BLKOUT Liberation Platform",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  },
+  "liberation": {
+    "creatorSovereignty": "75-percent-minimum",
+    "communityGovernance": "democratic",
+    "traumaInformed": true
+  }
+}
