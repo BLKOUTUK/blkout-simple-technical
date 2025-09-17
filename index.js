@@ -9,8 +9,17 @@ const LiberationOrchestrator = require('./LiberationOrchestrator');
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Middleware
-app.use(cors());
+// Middleware - CORS configuration for frontend connection
+app.use(cors({
+  origin: [
+    'https://blkout-liberation-frontend.vercel.app',
+    'http://localhost:5173', // Vite dev server
+    'http://localhost:3000'  // Alternative dev port
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
+}));
 app.use(express.json());
 
 // Initialize orchestrator (simple instantiation)
