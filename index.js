@@ -53,6 +53,52 @@ app.post('/api/features', (req, res) => {
   }
 });
 
+// BLKOUTHUB API Routes
+app.get('/api/blkouthub/members', (req, res) => {
+  try {
+    const members = orchestrator.getBlkouthubMembers();
+    res.json(members);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+app.get('/api/blkouthub/members/:memberId/matches', (req, res) => {
+  try {
+    const matches = orchestrator.findMemberMatches(req.params.memberId);
+    res.json(matches);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+app.get('/api/blkouthub/hotseats', (req, res) => {
+  try {
+    const hotseats = orchestrator.getHotseatSessions();
+    res.json(hotseats);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+app.post('/api/blkouthub/hotseats', (req, res) => {
+  try {
+    const session = orchestrator.createHotseatSession(req.body);
+    res.status(201).json(session);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+app.post('/api/blkouthub/hotseats/:sessionId/join', (req, res) => {
+  try {
+    const result = orchestrator.joinHotseatSession(req.params.sessionId, req.body.memberId);
+    res.json(result);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
 app.get('/health', (req, res) => {
   res.json({
     status: 'healthy',
