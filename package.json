@@ -12,7 +12,7 @@
     "cors": "^2.8.5"
   },
   "engines": {
-    "node": "22.x"
+    "node": "18.x"
   },
   "liberation": {
     "creatorSovereignty": "75-percent-minimum",
